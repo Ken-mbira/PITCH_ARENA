@@ -1,0 +1,13 @@
+.navbar {
+    font-family: 'Roboto', sans-serif;
+}
+
+#intro {
+    font-family: 'Lobster', cursive;
+    font-size: 5vmin;
+}
+
+.call-to-actions div {
+    margin: 10px;
+    margin-bottom: 20px;
+}

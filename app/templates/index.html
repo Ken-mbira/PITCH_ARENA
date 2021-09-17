@@ -1,2 +1,23 @@
 {% extends 'base.html' %} {% block content %}
-<h1>Hello world</h1> {% endblock %}
+<div class="card">
+    <div class="row g-0">
+        <div class="col-md-8">
+            <div class="card-body" id="intro">
+                <p class="card-text">Many times you have only that one minute to make a point and it's quite stressful to figure out what to say, you know what, why don't you let us worry about that.</p>
+                <p class="card-text"><small style="font-size: 3vmin;" class="text-muted">Someone who only had a minute to say this.</small></p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <img src="{{ url_for('static',filename='microphone.jpg')}}" class="img-fluid" alt="image of a microphone">
+        </div>
+    </div>
+</div>
+<div class="call-to-actions" style="text-align: center;">
+    <div>
+        <button class="btn" id="intro" style="background-color: #3B3355;">Create a pitch</button>
+    </div>
+    <div>
+        <button class="btn" id="intro" style="background-color: #3B3355;">View pitches</button>
+    </div>
+</div>
+{% endblock %}

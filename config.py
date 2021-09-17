@@ -1,6 +1,7 @@
 class Config:
     """This is the main configuration class that has base configurations for the whole application
     """
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kenmbira:1234@localhost/pitch_arena'
 
 class ProdConfig(Config):
     """This is the class containing the configurations needed for the production environment

@@ -25,7 +25,7 @@ class TestConfig(Config):
     Args:
         Config ([class]): [This is the parent class for the configurations]
     """
-    pass
+    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kenmbira:1234@localhost/pitch_arena_test'
 
 config_options = {
     'development':DevConfig,

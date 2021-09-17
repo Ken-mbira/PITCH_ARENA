@@ -9,5 +9,10 @@
 
 .call-to-actions div {
     margin: 10px;
-    margin-bottom: 20px;
+}
+
+.footer {
+    font-family: 'Roboto', sans-serif;
+    left: 0;
+    right: 0;
 }

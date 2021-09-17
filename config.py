@@ -1,5 +1,3 @@
-import os
-
 class Config:
     """This is the main configuration class that has base configurations for the whole application
     """

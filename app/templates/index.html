@@ -17,7 +17,7 @@
         <a class="btn" id="intro" style="background-color: #3B3355;" href="{{ url_for('main.create_pitch')}}">Create a pitch</a>
     </div>
     <div>
-        <a class="btn" id="intro" style="background-color: #3B3355;" href="#">View pitches</a>
+        <a class="btn" id="intro" style="background-color: #3B3355;" href="{{ url_for('main.show_pitch')}}">View pitches</a>
     </div>
 </div>
 {% endblock %}

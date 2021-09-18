@@ -57,7 +57,7 @@ class User(UserMixin,db.Model):
         return f'User {self.username}'
 
 
-class Pitch(UserMixin,db.Model):
+class Pitch(db.Model):
     """This will define all behaviours of the comments
 
     Args:
@@ -77,3 +77,6 @@ class Pitch(UserMixin,db.Model):
         """
         db.session.add(self)
         db.session.commit()
+
+    def __repr__(self):
+        return f'User {self.username}'

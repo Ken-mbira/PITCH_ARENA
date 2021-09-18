@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<div class="row">
+    <div class="btn-group" role="group" aria-label="Basic example">
+        <a class="btn btn-secondary" href="#">Interview</a>
+        <a class="btn btn-secondary" href="#">Promotion Pitch</a>
+        <a class="btn btn-secondary" href="#">Pickup Lines</a>
+        <a class="btn btn-secondary" href="#">Comedy lines</a>
+    </div>
+    <div class="">
+        {% if pitch %} {% for pitch in pitches %}
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{{ pitch.title}}</h5>
+                <p class="card-text">{{ pitch.pitch }}</p>
+                <p class="card-text"><small class="text-muted">{{ pitch.posted}}</small></p>
+            </div>
+        </div>
+        {% endfor %} {% else %}
+        <p>There are no pitches at the moment, you could though
+            <a href="{{ url_for('main.create_pitch')}}">Create a pitch</a>
+        </p>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

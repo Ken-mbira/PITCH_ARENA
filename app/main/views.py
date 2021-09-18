@@ -1,4 +1,5 @@
-from flask import render_template,abort,flash
+from flask import render_template,abort,flash,redirect
+from flask.helpers import url_for
 from flask_login import login_required,current_user
 
 from app.models import Pitch, User, db
@@ -29,5 +30,14 @@ def create_pitch():
         db.session.add(pitch)
         db.session.commit()
         flash ("Pitch created")
+        return redirect(url_for('main.show_pitch'))
 
-    return render_template('pitch.html',pitch = pitch_form)
+    return render_template('pitch/create_pitch.html',pitch = pitch_form)
+
+@main.route('/pitch')
+def show_pitch():
+    """This function will display all the pitches
+    """
+    pitches = Pitch.query.all()
+
+    return render_template('pitch/pitch.html',pitches = pitches)

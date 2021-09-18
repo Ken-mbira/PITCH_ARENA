@@ -2,12 +2,13 @@ from flask import render_template,redirect,url_for
 
 from ..models import User
 from . import auth
-from .forms import RegistrationForm
+from .forms import RegistrationForm,LoginForm
 from .. import db
 
 @auth.route('/login')
 def login():
-    return render_template('auth/login.html')
+    login_form = LoginForm()
+    return render_template('auth/login.html',login_form = login_form)
 
 @auth.route('/register',methods = ["GET","POST"])
 def register():

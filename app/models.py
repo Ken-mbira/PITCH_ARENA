@@ -27,7 +27,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique=True,index=True)
     pass_secure = db.Column(db.String(255))
-    comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
+    comments = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
     profile_pic_path = db.Column(db.String(255))
 
     @property
@@ -57,22 +57,22 @@ class User(UserMixin,db.Model):
         return f'User {self.username}'
 
 
-class Comment(UserMixin,db.Model):
+class Pitch(UserMixin,db.Model):
     """This will define all behaviours of the comments
 
     Args:
         UserMixin ([type]): [description]
         db ([Model]): [This will connect all the comments to the database]
     """
-    __tablename__ = 'comments'
+    __tablename__ = 'pitches'
 
-    comment_id = db.Column(db.Integer,primary_key=True)
-    comment_title = db.Column(db.String(255))
-    comment = db.Column(db.String(255))
+    pitch_id = db.Column(db.Integer,primary_key=True)
+    pitch_title = db.Column(db.String(255))
+    pitch = db.Column(db.String(255))
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-    def save_comment(self):
+    def save_pitch(self):
         """This will save the comment to the database
         """
         db.session.add(self)

@@ -3,6 +3,7 @@ from flask_login import login_required,current_user
 
 from app.models import User
 from . import main
+from .forms import PitchForm
 
 @main.route('/')
 def index():
@@ -17,3 +18,11 @@ def profile(username):
         abort(404)
     
     return render_template('profile/profile.html',user = user)
+
+@main.route('/create')
+@login_required
+def create_pitch():
+    """This will create the pitch according to the category
+    """
+    pitch = PitchForm()
+    return render_template('pitch.html',pitch = pitch)

@@ -8,7 +8,6 @@ class PitchForm(FlaskForm):
     Args:
         FlaskForm ([type]): [description]
     """
-    pitch_title = StringField('Enter the title of the pitch',validators=[Required()])
     pitch = StringField('Enter your pitch',validators=[Required()])
     pitch_category = RadioField('Enter the category of the pitch',validators=[Required()],choices=[('interview'),('promotion'),('Pickup lines'),('Comedy lines')])
     submit = SubmitField('Pitch')

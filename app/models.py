@@ -67,7 +67,7 @@ class Pitch(UserMixin,db.Model):
     __tablename__ = 'pitches'
 
     pitch_id = db.Column(db.Integer,primary_key=True)
-    pitch_title = db.Column(db.String(255))
+    pitch_category = db.Column(db.String(255))
     pitch = db.Column(db.String(255))
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))

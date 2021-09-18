@@ -1,14 +1,16 @@
-{% extends 'base.html' %} {% block content %}
+{% extends 'base.html' %} {% block content %} {% for message in get_flashed_messages()%}
+<div class="alert alert-success" role="alert">
+    {{ message }}
+</div>
+{% endfor %}
 <div class="container" style="border:solid black 1px; padding: 10px; margin-top:20px;">
     <form class="container-fluid" method="POST">
         {{ pitch.hidden_tag()}}
         <div class="mb-3">
-            {{ pitch.pitch_title.label(class="form-label")}}{{ pitch.pitch_title(class="form-control")}}
-        </div>
-        <div class="mb-3">
             {{ pitch.pitch.label(class="form-label")}}{{ pitch.pitch(class="form-control")}}
         </div>
         <div class="mb-3">
+            <p>Choose the pitch category</p>
             {{ pitch.pitch_category(class="list-group-flush")}}
         </div>
         <div class="mb-3">

@@ -31,6 +31,7 @@ def create_app(config_name):
     bootstrap.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    # configure_uploads(app,photos)
 
     #registering blueprints
     from .main import main as main_blueprint

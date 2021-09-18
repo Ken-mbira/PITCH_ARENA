@@ -5,6 +5,7 @@ class Config:
     """
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kenmbira:1234@localhost/pitch_arena'
     SECRET_KEY = os.environ.get('SECRET_KEY')
+    UPLOADED_PHOTOS_DEST = 'app/static/photos'
 
 class ProdConfig(Config):
     """This is the class containing the configurations needed for the production environment

@@ -1,0 +1,25 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container">
+    <div style="text-align: center;">
+        <img src="{{ url_for('static',filename='Logo.png')}}" width="200px" class="img-fluid">
+        <h3>{{ user.username }}</h3>
+    </div>
+    <div class="row">
+        <div class="btn-group" role="group" aria-label="Basic example">
+            <a class="btn btn-secondary" href="#">Interview</a>
+            <a class="btn btn-secondary" href="#">Promotion Pitch</a>
+            <a class="btn btn-secondary" href="#">Pickup Lines</a>
+            <a class="btn btn-secondary" href="#">Comedy lines</a>
+        </div>
+        <div class="">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Comment title</h5>
+                    <p class="card-text">This is the comment itself</p>
+                    <p class="card-text"><small class="text-muted">When the comment was created</small></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

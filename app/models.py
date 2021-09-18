@@ -28,6 +28,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique=True,index=True)
     pass_secure = db.Column(db.String(255))
     comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
+    profile_pic_path = db.Column(db.String(255))
 
     @property
     def password(self):

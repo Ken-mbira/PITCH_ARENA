@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask,render_template
 from flask_bootstrap import Bootstrap
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
@@ -11,6 +11,13 @@ db = SQLAlchemy()
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'
+
+
+def four_Ow_four(error):
+    '''
+    Function to render the 404 error page
+    '''
+    return render_template('404.html'),404
 
 def create_app(config_name):
     """This is the app factory function
@@ -31,5 +38,7 @@ def create_app(config_name):
 
     from .auth import auth as auth_blueprint
     app.register_blueprint(auth_blueprint,url_prefix='/authentication')
+
+    app.register_error_handler(404,four_Ow_four)
 
     return app

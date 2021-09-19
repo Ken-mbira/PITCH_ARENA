@@ -1,25 +1,88 @@
 {% extends 'base.html' %} {% block content %}
-<div class="row">
-    <div class="btn-group" role="group" aria-label="Basic example">
-        <a class="btn btn-secondary" href="#">Interview</a>
-        <a class="btn btn-secondary" href="#">Promotion Pitch</a>
-        <a class="btn btn-secondary" href="#">Pickup Lines</a>
-        <a class="btn btn-secondary" href="#">Comedy lines</a>
-    </div>
-    <div class="">
-        {% if pitch %} {% for pitch in pitches %}
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{{ pitch.title}}</h5>
-                <p class="card-text">{{ pitch.pitch }}</p>
-                <p class="card-text"><small class="text-muted">{{ pitch.posted}}</small></p>
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+          Interview Pitch
+        </button>
+        </h2>
+        <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+            {% if interview_pitches %} {% for item in interview_pitches %}
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ item.pitch }}</p>
+                    <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                </div>
             </div>
+            {% endfor %} {% else %}
+            <div>
+                <p>There are no Interview pitches yet, perhaps you would like to <span><a href="{{ url_for('main.create_pitch')}}">add one</a></span></p>
+            </div>
+            {% endif %}
         </div>
-        {% endfor %} {% else %}
-        <p>There are no pitches at the moment, you could though
-            <a href="{{ url_for('main.create_pitch')}}">Create a pitch</a>
-        </p>
-        {% endif %}
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+          Promotion pitch
+        </button>
+        </h2>
+        <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
+            {% if promotion_pitches %} {% for item in promotion_pitches %}
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ item.pitch }}</p>
+                    <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <div>
+                <p>There are no Promotion pitches yet, perhaps you would like to <span><a href="{{ url_for('main.create_pitch')}}">add one</a></span></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+          Pickup line
+        </button>
+        </h2>
+        <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
+            {% if pickup_lines %}{% for item in pickup_lines %}
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ item.pitch }}</p>
+                    <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <div>
+                <p>There are no Pickup lines yet, perhaps you would like to <span><a href="{{ url_for('main.create_pitch')}}">add one</a></span></p>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseFour">
+          Comedic quips
+        </button>
+        </h2>
+        <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionFlushExample">
+            {% if comedic_quips %}{% for item in comedic_quips %}
+            <div class="card">
+                <div class="card-body">
+                    <p class="card-text">{{ item.pitch }}</p>
+                    <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                </div>
+            </div>
+            {% endfor %} {% else %}
+            <div>
+                <p>There are no Comedic quips yet, perhaps you would like to <span><a href="{{ url_for('main.create_pitch')}}">add one</a></span></p>
+            </div>
+            {% endif %}
+        </div>
     </div>
 </div>
 {% endblock %}

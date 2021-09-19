@@ -27,7 +27,7 @@ class User(UserMixin,db.Model):
     username = db.Column(db.String(255))
     email = db.Column(db.String(255),unique=True,index=True)
     pass_secure = db.Column(db.String(255))
-    comments = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
+    pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
     profile_pic_path = db.Column(db.String(255))
 
     @property
@@ -72,11 +72,5 @@ class Pitch(db.Model):
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
 
-    def save_pitch(self):
-        """This will save the comment to the database
-        """
-        db.session.add(self)
-        db.session.commit()
-
     def __repr__(self):
-        return f'User {self.username}'
+        return f'Pitch {self.pitch}'

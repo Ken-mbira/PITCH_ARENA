@@ -38,6 +38,9 @@ def create_pitch():
 def show_pitch():
     """This function will display all the pitches
     """
-    pitches = Pitch.query.all()
+    interview_pitches = Pitch.query.filter_by(pitch_category = 'interview').all()
+    promotion_pitches = Pitch.query.filter_by(pitch_category = 'promotion').all()
+    pickup_lines = Pitch.query.filter_by(pitch_category = 'Pickup lines').all()
+    comedic_quips = Pitch.query.filter_by(pitch_category = 'Comedy lines').all()
 
-    return render_template('pitch/pitch.html',pitches = pitches)
+    return render_template('pitch/pitch.html',interview_pitches = interview_pitches,promotion_pitches = promotion_pitches,pickup_lines = pickup_lines,comedic_quips = comedic_quips)

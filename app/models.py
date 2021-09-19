@@ -29,6 +29,7 @@ class User(UserMixin,db.Model):
     pass_secure = db.Column(db.String(255))
     pitches = db.relationship('Pitch',backref = 'user',lazy = "dynamic")
     profile_pic_path = db.Column(db.String(255))
+    comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
 
     @property
     def password(self):
@@ -71,6 +72,23 @@ class Pitch(db.Model):
     pitch = db.Column(db.String(255))
     posted = db.Column(db.DateTime,default=datetime.utcnow)
     user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+    comments = db.relationship('Comment',backref = 'user',lazy = "dynamic")
 
     def __repr__(self):
         return f'Pitch {self.pitch}'
+
+class Comment(db.Model):
+    """This is the class that defines all behaviours that accompany the comments
+
+    Args:
+        db (Model): [This will connect all the comments to the database]
+    """
+    __tablename__ = 'comments'
+
+    id = db.Column(db.Integer,primary_key=True)
+    comment = db.Column(db.String(255))
+    pitch_id = db.Column(db.Integer,db.ForeignKey("pitches.pitch_id"))
+    user_id = db.Column(db.Integer,db.ForeignKey("users.id"))
+
+    def __repr__(self):
+        return f'Comment {self.id}'

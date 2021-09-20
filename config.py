@@ -1,4 +1,5 @@
 import os
+import re
 
 class Config:
     """This is the main configuration class that has base configurations for the whole application
@@ -11,7 +12,9 @@ class ProdConfig(Config):
     Args:
         Config (class): [This is the parent class for the configurations]
     """
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    uri = os.getenv("DATABASE_URL")  # or other relevant config var
+    if uri.startswith("postgres://"):
+        uri = uri.replace("postgres://", "postgresql://", 1)
 
 class DevConfig(Config):
     """This is the class containing the configurations needed for the development environment

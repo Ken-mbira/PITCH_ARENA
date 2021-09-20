@@ -28,6 +28,7 @@ class User(UserMixin,db.Model):
     email = db.Column(db.String(255),unique=True,index=True)
     pass_secure = db.Column(db.String(255))
     pitches = db.relationship('Pitch',backref = 'pitche',lazy = "dynamic")
+    pitches = db.relationship('Comment',backref = 'commenter',lazy="dynamic")
     profile_pic_path = db.Column(db.String(255))
 
     @property
@@ -88,6 +89,7 @@ class Comment(db.Model):
     id = db.Column(db.Integer,primary_key=True)
     comment = db.Column(db.String(255))
     pitch_id = db.Column(db.Integer,db.ForeignKey('pitches.pitch_id'))
+    user_id = db.Column(db.Integer,db.ForeignKey('users.id'))
     upvote = db.Column(db.Integer)
 
     def __repr__(self):

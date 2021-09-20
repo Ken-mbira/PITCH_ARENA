@@ -44,16 +44,16 @@ def show_pitch():
 
     return render_template('pitch/pitch.html',interview_pitches = interview_pitches,promotion_pitches = promotion_pitches,pickup_lines = pickup_lines,comedic_quips = comedic_quips)
 
-@main.route('/comment')
+@main.route('/comment/<pitch_id>',methods=["GET","POST"])
 @login_required
-def comment():
+def comment(pitch_id):
     """This will add a comment
     """
     comment_form = CommentForm()
     if comment_form.validate_on_submit():
-        comment = Comment(comment = comment_form.comment.data, vote = comment_form.vote.data)
+        comment = Comment(comment = comment_form.comment.data, upvote = comment_form.vote.data,pitch_id = pitch_id)
         db.session.add(comment)
         db.session.commit()
 
-        return redirect(url_for('main.comment'))
+        return redirect(url_for('main.index'))
     return render_template('comment.html',form = comment_form)

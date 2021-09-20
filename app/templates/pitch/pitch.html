@@ -12,7 +12,7 @@
                 <div class="card-body">
                     <p class="card-text">{{ item.pitch }}</p>
                     <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
-                    <a href="{{ url_for('main.comment')}}" class="btn btn-secondary">Comment</a>
+                    <a href="{{url_for('main.comment',pitch_id = item.pitch_id)}}" class="btn btn-secondary">Comment</a>
                 </div>
             </div>
             {% endfor %} {% else %}
@@ -34,6 +34,7 @@
                 <div class="card-body">
                     <p class="card-text">{{ item.pitch }}</p>
                     <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                    <a href="{{url_for('main.comment',pitch_id = item.pitch_id)}}" class="btn btn-secondary">Comment</a>
                 </div>
             </div>
             {% endfor %} {% else %}
@@ -54,7 +55,8 @@
             <div class="card">
                 <div class="card-body">
                     <p class="card-text">{{ item.pitch }}</p>
-                    <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                    <p class="card-text"><small class="text-muted">{{ item.posted }} </small></p>
+                    <a href="{{url_for('main.comment',pitch_id = item.pitch_id)}}" class="btn btn-secondary">Comment</a>
                 </div>
             </div>
             {% endfor %} {% else %}
@@ -76,6 +78,7 @@
                 <div class="card-body">
                     <p class="card-text">{{ item.pitch }}</p>
                     <p class="card-text"><small class="text-muted">{{ item.posted }}</small></p>
+                    <a href="{{url_for('main.comment',pitch_id = item.pitch_id)}}" class="btn btn-secondary">Comment</a>
                 </div>
             </div>
             {% endfor %} {% else %}

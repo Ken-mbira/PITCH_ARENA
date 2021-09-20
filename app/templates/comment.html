@@ -1,0 +1,16 @@
+{% extends 'base.html' %} {% block content %}
+<div class="container" style="border:solid black 1px; padding: 10px;">
+    <form class="container-fluid" method="POST">
+        {{ form.hidden_tag()}}
+        <div class="mb-3">
+            {{ form.comment.label(class="form-label")}}{{ form.comment(class="form-control")}}
+        </div>
+        <div class="mb-3">
+            <button class="btn btn-outline-secondary">{{ form.vote }}</button>
+        </div>
+        <div class="mb-3">
+            {{ form.submit(class="btn btn-success")}}
+        </div>
+    </form>
+</div>
+{% endblock %}

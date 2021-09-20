@@ -2,9 +2,9 @@ from flask import render_template,abort,flash,redirect
 from flask.helpers import url_for
 from flask_login import login_required,current_user
 
-from app.models import Pitch, User, db
+from app.models import Comment, Pitch, User, db
 from . import main
-from .forms import PitchForm
+from .forms import PitchForm,CommentForm
 
 @main.route('/')
 def index():
@@ -29,7 +29,6 @@ def create_pitch():
         pitch = Pitch(pitch = pitch_form.pitch.data,pitch_category = pitch_form.pitch_category.data,user_id = current_user.id)
         db.session.add(pitch)
         db.session.commit()
-        flash ("Pitch created")
         return redirect(url_for('main.show_pitch'))
 
     return render_template('pitch/create_pitch.html',pitch = pitch_form)
@@ -44,3 +43,17 @@ def show_pitch():
     comedic_quips = Pitch.query.filter_by(pitch_category = 'Comedy lines').all()
 
     return render_template('pitch/pitch.html',interview_pitches = interview_pitches,promotion_pitches = promotion_pitches,pickup_lines = pickup_lines,comedic_quips = comedic_quips)
+
+@main.route('/comment')
+@login_required
+def comment():
+    """This will add a comment
+    """
+    comment_form = CommentForm()
+    if comment_form.validate_on_submit():
+        comment = Comment(comment = comment_form.comment.data, vote = comment_form.vote.data)
+        db.session.add(comment)
+        db.session.commit()
+
+        return redirect(url_for('main.comment'))
+    return render_template('comment.html',form = comment_form)

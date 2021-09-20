@@ -52,7 +52,7 @@ def comment(pitch_id):
     comment_form = CommentForm()
     comments = Comment.query.all()
     if comment_form.validate_on_submit():
-        comment = Comment(comment = comment_form.comment.data, upvote = comment_form.vote.data,pitch_id = pitch_id)
+        comment = Comment(comment = comment_form.comment.data, upvote = comment_form.vote.data,pitch_id = pitch_id,user_id = current_user.id)
         db.session.add(comment)
         db.session.commit()
 

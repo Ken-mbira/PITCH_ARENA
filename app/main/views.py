@@ -15,9 +15,15 @@ def index():
 @login_required
 def profile(username):
     user = User.query.filter_by(username = username).first()
+    pitch_list = []
+    pitches = Pitch.query.all()
+    for pitch in pitches:
+        if pitch.pitche.username == username:
+            pitch_list.append(pitch)
+
     if user is None:
         abort(404)
-    return render_template('profile/profile.html',user = user)
+    return render_template('profile/profile.html',user = user,pitches = pitch_list)
 
 @main.route('/create',methods = ["GET","POST"])
 @login_required

@@ -12,13 +12,15 @@
             <a class="btn btn-secondary" href="#">Comedy lines</a>
         </div>
         <div class="">
+            {% for pitch in pitches %}
             <div class="card">
                 <div class="card-body">
-                    <h5 class="card-title">Comment title</h5>
-                    <p class="card-text">This is the comment itself</p>
-                    <p class="card-text"><small class="text-muted">When the comment was created</small></p>
+                    <h5 class="card-title">{{ pitch.pitch }}</h5>
+                    <a href="{{url_for('main.comment',pitch_id = pitch.pitch_id)}}" class="btn btn-outline-secondary">See Comments</a>
+                    <p class="card-text"><small class="text-muted">{{ pitch.posted }}</small></p>
                 </div>
             </div>
+            {% endfor %}
         </div>
     </div>
 </div>

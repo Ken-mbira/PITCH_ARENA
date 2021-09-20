@@ -50,10 +50,11 @@ def comment(pitch_id):
     """This will add a comment
     """
     comment_form = CommentForm()
+    comments = Comment.query.all()
     if comment_form.validate_on_submit():
         comment = Comment(comment = comment_form.comment.data, upvote = comment_form.vote.data,pitch_id = pitch_id)
         db.session.add(comment)
         db.session.commit()
 
-        return redirect(url_for('main.index'))
-    return render_template('comment.html',form = comment_form)
+        return redirect(url_for('main.comment',pitch_id = pitch_id))
+    return render_template('comment.html',form = comment_form,comments = comments)

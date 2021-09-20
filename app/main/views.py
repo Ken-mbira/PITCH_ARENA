@@ -49,6 +49,7 @@ def show_pitch():
 def comment(pitch_id):
     """This will add a comment
     """
+    pitches = Pitch.query.all()
     comment_form = CommentForm()
     comments = Comment.query.all()
     if comment_form.validate_on_submit():
@@ -57,4 +58,4 @@ def comment(pitch_id):
         db.session.commit()
 
         return redirect(url_for('main.comment',pitch_id = pitch_id))
-    return render_template('comment.html',form = comment_form,comments = comments)
+    return render_template('comment.html',form = comment_form,comments = comments,pitches = pitches,pitch_id = pitch_id)

@@ -4,7 +4,6 @@ class Config:
     """This is the main configuration class that has base configurations for the whole application
     """
     SECRET_KEY = os.environ.get('SECRET_KEY')
-    SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://kenmbira:1234@localhost/pitch_arena'
 
 class ProdConfig(Config):
     """This is the class containing the configurations needed for the production environment
@@ -12,7 +11,7 @@ class ProdConfig(Config):
     Args:
         Config (class): [This is the parent class for the configurations]
     """
-    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_PINK_URL")
 
 class DevConfig(Config):
     """This is the class containing the configurations needed for the development environment

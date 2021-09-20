@@ -11,7 +11,7 @@ class ProdConfig(Config):
     Args:
         Config (class): [This is the parent class for the configurations]
     """
-    SQLALCHEMY_DATABASE_URI = os.environ.get("HEROKU_POSTGRESQL_PINK_URL")
+    SQLALCHEMY_DATABASE_URI = os.environ.get("DATABASE")
 
 class DevConfig(Config):
     """This is the class containing the configurations needed for the development environment

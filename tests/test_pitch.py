@@ -18,3 +18,4 @@ class PitchModelTest(unittest.TestCase):
         """
         self.assertIsInstance(self.pitch,Pitch)
         self.assertEqual(self.pitch.pitch_category,'Promotion pitch','The categories are not equal')
+        self.assertEqual(self.pitch.pitch,'This beats the life',"The pitches don' seem to match")

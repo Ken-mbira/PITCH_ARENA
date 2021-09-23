@@ -15,6 +15,7 @@ This is an online platform for users to showcase their ideas for short but effec
 6. Flask
 7. SQLAlchemy Database
 8. Jinja
+9. Figma design tool for the mockup (design)[https://www.figma.com/file/4763G0ng5yxQCrTqZynfT4/Pitch-Arena?node-id=0%3A1]
 
 ## Set Up Instructions
 Follow the following instructions:
